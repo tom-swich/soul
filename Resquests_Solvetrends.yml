@@ -1,0 +1,346 @@
+type: collection.insomnia.rest/5.0
+name: SolvTrrends
+meta:
+  id: wrk_68251ac3e13a4732aaee70f966599df1
+  created: 1746718720846
+  modified: 1746718720846
+  description: ""
+collection:
+  - url: http://localhost:8080/actuator/health
+    name: alive
+    meta:
+      id: req_782ef99d73934f4c887905621db400cc
+      created: 1746718738398
+      modified: 1746723890879
+      isPrivate: false
+      description: ""
+      sortKey: -1746718738398
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+        id: pair_15eb60182c8b455d940eb2b5941b3b8c
+      - id: pair_ce76965dc13345e0aff2343eef4352ec
+        name: content-typo
+        value: json
+        description: ""
+        disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/auth/login
+    name: login
+    meta:
+      id: req_b54e1368d0fa4a8ba8c4cb4fd9f81565
+      created: 1746723923204
+      modified: 1747426308352
+      isPrivate: false
+      description: ""
+      sortKey: -1745817086292
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {"email":"teste@teste.com",
+        "password":"teste123"}
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+        id: pair_15eb60182c8b455d940eb2b5941b3b8c
+      - id: pair_ce76965dc13345e0aff2343eef4352ec
+        name: content-typo
+        value: json
+        description: ""
+        disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/auth/register
+    name: Register
+    meta:
+      id: req_30f17fbdcb7844bf86be6ddd57eff82d
+      created: 1747337705056
+      modified: 1747338115322
+      isPrivate: false
+      description: ""
+      sortKey: -1745366260239
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {"email":"teste@teste.com",
+        "password":"teste123",
+        "nome":"teste",
+        "sobrenome":"Vinny",
+        "cpf":"36578396829",
+        "paisTelefone":"55",
+        "telefone":11952537889}
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+        id: pair_15eb60182c8b455d940eb2b5941b3b8c
+      - id: pair_ce76965dc13345e0aff2343eef4352ec
+        name: content-typo
+        value: json
+        description: ""
+        disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/user/me
+    name: Me
+    meta:
+      id: req_3febd21233f442d28d168efd14612d4d
+      created: 1747408103979
+      modified: 1748813655209
+      isPrivate: false
+      description: ""
+      sortKey: -1747408103979
+    method: OPTIONS
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+        id: pair_7c8b76d71f724a9ea32f394ff28ebcf2
+        disabled: true
+      - id: pair_eefa2fa8867c4677a08960794f545ffc
+        name: Access-Control-Allow-Origin
+        value: "*"
+        description: ""
+        disabled: true
+      - id: pair_f7059843e7314df8adc8627548a577c8
+        name: origin
+        value: http://localhost:3000
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_b54e1368d0fa4a8ba8c4cb4fd9f81565',
+        'b64::JC5hY2Nlc3NUb2tlbg==::46b', 'never', 60 %}"
+      disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://ec2-34-205-15-185.compute-1.amazonaws.com:8080/actuato
+    name: Health Producao
+    meta:
+      id: req_d8bb1c01907d41e28e001fefe7adeb37
+      created: 1748109464170
+      modified: 1749250662630
+      isPrivate: false
+      description: ""
+      sortKey: -1748109464170
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/user/me
+    name: Me CORS
+    meta:
+      id: req_f205b07571ee4686b8dcfd350e2c92b9
+      created: 1748109525771
+      modified: 1748110226654
+      isPrivate: false
+      description: ""
+      sortKey: -1747063421188.5
+    method: OPTIONS
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    authentication:
+      type: bearer
+      token: "{% response 'body', 'req_b54e1368d0fa4a8ba8c4cb4fd9f81565',
+        'b64::JC5hY2Nlc3NUb2tlbg==::46b', 'never', 60 %}"
+      disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://ec2-34-205-15-185.compute-1.amazonaws.com:8080/user/me
+    name: Me Producao
+    meta:
+      id: req_58a21b3311224c2194078c63a37fb317
+      created: 1749250644929
+      modified: 1749250669207
+      isPrivate: false
+      description: ""
+      sortKey: -1747758784074.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://ec2-34-205-15-185.compute-1.amazonaws.com:8080/auth/login
+    name: login producao
+    meta:
+      id: req_4e04ca772f3444a0811518d07206b649
+      created: 1749515053037
+      modified: 1749515087959
+      isPrivate: false
+      description: ""
+      sortKey: -1745591673265.5
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {"email":"teste2@teste.com",
+        "password":"123456"}
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+        id: pair_15eb60182c8b455d940eb2b5941b3b8c
+      - id: pair_ce76965dc13345e0aff2343eef4352ec
+        name: content-typo
+        value: json
+        description: ""
+        disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://ec2-34-205-15-185.compute-1.amazonaws.com:8080/auth/login
+    name: login producao CORS
+    meta:
+      id: req_b81ec3fd7b1a4c8382bfd88c0f76688d
+      created: 1749515370233
+      modified: 1749515373230
+      isPrivate: false
+      description: ""
+      sortKey: -1745478966752.25
+    method: OPTIONS
+    body:
+      mimeType: application/json
+      text: |-
+        {"email":"teste2@teste.com",
+        "password":"123456"}
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+        id: pair_15eb60182c8b455d940eb2b5941b3b8c
+      - id: pair_ce76965dc13345e0aff2343eef4352ec
+        name: content-typo
+        value: json
+        description: ""
+        disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/auth/reset-password
+    name: reset senha local
+    meta:
+      id: req_5a464f2aa37e4d6a92ee8d6e0ae60f49
+      created: 1750116883856
+      modified: 1750123918224
+      isPrivate: false
+      description: ""
+      sortKey: -1745704379778.75
+    method: POST
+    body:
+      mimeType: application/json
+      text: ""
+    parameters:
+      - id: pair_a9781ece6e494ef3a2e14a4ce8409901
+        name: email
+        value: irmaocaradepau@gmail.com
+        description: ""
+        disabled: false
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+        id: pair_15eb60182c8b455d940eb2b5941b3b8c
+      - id: pair_ce76965dc13345e0aff2343eef4352ec
+        name: content-typo
+        value: json
+        description: ""
+        disabled: true
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_103f9584fe3237075fe414625b58085fe8bec867
+    created: 1746718720860
+    modified: 1746917604389
+  cookies:
+    - key: JSESSIONID
+      value: 58A94F06689B1545E36800C21D44E79E
+      domain: localhost
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-05-08T16:45:37.727Z
+      lastAccessed: 2025-05-10T22:53:24.388Z
+      id: 13ac58a1-5056-42cf-b94d-56d90afbac9e
+environments:
+  name: Base Environment
+  meta:
+    id: env_103f9584fe3237075fe414625b58085fe8bec867
+    created: 1746718720853
+    modified: 1747408296393
+    isPrivate: false
+  data:
+    access_token: ""
+    "": ""

@@ -1,0 +1,28 @@
+
+# SolvTrends README
+
+Projeto funciona em java 24
+
+## Tabela de Conteúdos
+
+*   [Como executar via docker](#Como executar via docker)
+*   [Requests](#Requests)
+*   [Contribuições](#contribuições)
+
+## Como executar via docker
+
+1.  Baixe o código fonte do projeto
+2.  Entre na pasta do projeto solvtrends
+3.  Execute o comando docker-compose build
+4.  Execute o comando docker-compose up
+
+## Requests
+
+ * Na pasta principal do projeto existem 2 arquivos para importar no postman ou insomnia com as request ja prontas e token referenciado.
+    1. Resquests_Solvetrends.har
+    2. Resquests_Solvetrends.yml
+ * Executar a request Login e as demais irão funcionar com token retornado do login.
+
+
+ ## Contribuições
+  * Vinicus Valente

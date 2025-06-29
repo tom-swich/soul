@@ -1,0 +1,71 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: solvtrends
+
+  datasource:
+    url: jdbc:postgresql://solvtrends.ckx88wmeo1ua.us-east-1.rds.amazonaws.com:5432/solvtrends
+    username: solvtrends
+    password: solvtr3ndsPass!
+#    username: solvtrends
+#    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob:
+          non_contextual_creation: true
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
+    out-of-order: false
+
+
+  mail:
+    username: solvtrends@gmail.com
+    host: smtp.gmail.com
+    port: 587
+    password: uawauoaffyxpfbfy
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+jwt:
+  secret: 0YlEbScF66bobTR3BflU9YQe3pAGdJ5GPhXh5UYZhftqDwH7bhnfq4mNAAeSMPQu7fgHB4vTOGsTEmFi6WmYDg==
+
+management:
+  info:
+    env:
+      enabled: true
+  env:
+    enabled: true
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,prometheus,metrics,info
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+sendgrid:
+  api_key: SK9bd2ab3af1a1494d0c93d25e8d154781
+  secret: mcido0V4zFGkvnrGRDNboRNZqkNIrCYk
+
