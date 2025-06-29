@@ -9,6 +9,7 @@ import com.solvtrends.monolito.repository.TokenRepository;
 import com.solvtrends.monolito.repository.UserRepository;
 import com.solvtrends.monolito.util.CpfUtil;
 import jakarta.mail.MessagingException;
+import java.security.SecureRandom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -61,7 +62,7 @@ public class UserService {
         Usuario usuario = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado para email: " + email));
 
-        Random random = new Random();
+        Random random = new SecureRandom();
 
         int token = ThreadLocalRandom.current().nextInt(1000, 10000);
         TokenModel tokenModel = new TokenModel();
