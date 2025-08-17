@@ -30,18 +30,6 @@ spring:
     validate-on-migrate: true
     out-of-order: false
 
-  mail:
-    username: solvtrends@gmail.com
-    host: smtp.gmail.com
-    port: 587
-    password: uawauoaffyxpfbfy
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-
 jwt:
   secret: 0YlEbScF66bobTR3BflU9YQe3pAGdJ5GPhXh5UYZhftqDwH7bhnfq4mNAAeSMPQu7fgHB4vTOGsTEmFi6WmYDg==
 

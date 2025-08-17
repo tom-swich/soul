@@ -9,6 +9,11 @@ Projeto funciona em java 24
 *   [Requests](#Requests)
 *   [Contribuições](#contribuições)
 
+## Como executar apontando pra AWS
+
+1.  Configurar no Environment variables: --spring.profiles.active=prod
+
+
 ## Como executar via docker
 
 1.  Baixe o código fonte do projeto

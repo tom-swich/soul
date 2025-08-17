@@ -1,9 +1,7 @@
 package com.solvtrends.monolito.controller;
 
 import com.solvtrends.monolito.request.AuthRequestModel;
-import com.solvtrends.monolito.model.TokenModel;
 import com.solvtrends.monolito.model.Usuario;
-import com.solvtrends.monolito.request.PasswordResetRequest;
 import com.solvtrends.monolito.request.TokenValidationRequest;
 import com.solvtrends.monolito.response.ResponseFactory;
 import com.solvtrends.monolito.security.JwtUtil;
@@ -36,29 +34,10 @@ public class AuthController {
          return  ResponseFactory.ok("Login realizado com sucesso", Map.of("accessToken", jwtUtil.generateToken(usuario.getEmail())));
     }
 
-
-
     @PostMapping("/verify-token")
     public ResponseEntity<?> verifyToken(@RequestBody TokenValidationRequest request) {
        userService.verifyResetToken(request.getEmail(), request.getToken());
        return ResponseFactory.ok("Token válido", null);
     }
-
-    @PostMapping("/reset-password")
-    public ResponseEntity<?> resetPassword(@RequestParam String email) {
-        TokenModel tokenModel = userService.resetPassword(email);
-
-        return ResponseFactory.ok("Token gerado com sucesso", Map.of("email", tokenModel.getEmail()));
-    }
-
-    @PutMapping("/reset-password")
-    public ResponseEntity<?> resetPassword(@RequestBody PasswordResetRequest request) {
-        userService.resetUserPassword(request.getEmail(), request.getToken(), request.getNewPassword());
-        return ResponseFactory.ok("Senha atualizada com sucesso!", null);
-
-    }
-
-
-
 
 }

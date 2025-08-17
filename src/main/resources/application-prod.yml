@@ -9,8 +9,6 @@ spring:
     url: jdbc:postgresql://solvtrends.ckx88wmeo1ua.us-east-1.rds.amazonaws.com:5432/solvtrends
     username: solvtrends
     password: solvtr3ndsPass!
-#    username: solvtrends
-#    password: root
 
   jpa:
     hibernate:

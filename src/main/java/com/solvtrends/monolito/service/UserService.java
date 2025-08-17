@@ -3,22 +3,26 @@ package com.solvtrends.monolito.service;
 import com.solvtrends.monolito.exception.EmailSendException;
 import com.solvtrends.monolito.exception.TokenExpiredException;
 import com.solvtrends.monolito.exception.TokenPersistException;
+import com.solvtrends.monolito.model.MercadoLivreDTO;
 import com.solvtrends.monolito.model.TokenModel;
 import com.solvtrends.monolito.model.Usuario;
 import com.solvtrends.monolito.repository.TokenRepository;
 import com.solvtrends.monolito.repository.UserRepository;
 import com.solvtrends.monolito.util.CpfUtil;
 import jakarta.mail.MessagingException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import jakarta.validation.ValidationException;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Pattern;
@@ -83,6 +87,15 @@ public class UserService {
         return tokenModel;
     }
 
+    public Usuario getMeByEmail (String email) {
+        Usuario usuario =  userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+        if (!usuario.getContaAtiva()) {
+            throw new UsernameNotFoundException("Conta inativa em " + usuario.getDataCancelamento());
+        }
+        return usuario;
+    }
+
+
     public TokenModel verifyResetToken(String email, int token) {
         TokenModel tokenModel = tokenRepository.findByEmailAndToken(email, token)
                 .orElseThrow(TokenExpiredException::new);
@@ -113,6 +126,52 @@ public class UserService {
 
             tokenRepository.delete(tokenModel);
         }
+    }
+
+
+    @Transactional
+    public void changePassword(String email, String oldPassword, String newPassword) {
+        Usuario usuario = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+
+        if (!passwordEncoder.matches(oldPassword, usuario.getPassword())) {
+            throw new RuntimeException("Senha antiga incorreta");
+        }
+
+        usuario.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(usuario);
+    }
+
+    public void cancelarConta(Usuario usuario) {
+        usuario.setContaAtiva(false);
+        usuario.setDataCancelamento(LocalDateTime.now());
+        userRepository.save(usuario);
+    }
+
+
+    public Usuario loginOrCreateUsuarioFromMercadoLivre(String email, String nome, String sobrenome) {
+        return userRepository.findByEmail(email).orElseGet(() -> {
+            Usuario novo = new Usuario();
+            novo.setEmail(email);
+            novo.setNome(nome);
+            novo.setSobrenome(sobrenome);
+            novo.setPassword("auth-mercadolivre"); // ou gere uma hash aleatória
+            userRepository.save(novo);
+            return novo;
+        });
+    }
+
+
+    public Usuario loginOrCreateUsuarioFromGoogle(String email, String nome, String sobrenome) {
+        return userRepository.findByEmail(email).orElseGet(() -> {
+            Usuario novo = new Usuario();
+            novo.setEmail(email);
+            novo.setNome(nome);
+            novo.setSobrenome(sobrenome);
+            novo.setPassword("auth-google"); // ou gere uma hash aleatória
+            userRepository.save(novo);
+            return novo;
+        });
     }
 
 

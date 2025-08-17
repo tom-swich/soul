@@ -1,15 +1,15 @@
 type: collection.insomnia.rest/5.0
-name: SolvTrrends
+name: My first collection
 meta:
-  id: wrk_68251ac3e13a4732aaee70f966599df1
-  created: 1746718720846
-  modified: 1746718720846
+  id: wrk_8ed5a8e6b5004b92846a34ae4f8612a5
+  created: 1751742888662
+  modified: 1751742888662
   description: ""
 collection:
   - url: http://localhost:8080/actuator/health
     name: alive
     meta:
-      id: req_782ef99d73934f4c887905621db400cc
+      id: req_eaeec33596094fc2973b6f46e753b22e
       created: 1746718738398
       modified: 1746723890879
       isPrivate: false
@@ -19,12 +19,11 @@ collection:
     headers:
       - name: User-Agent
         value: insomnia/11.1.0
-        id: pair_15eb60182c8b455d940eb2b5941b3b8c
-      - id: pair_ce76965dc13345e0aff2343eef4352ec
-        name: content-typo
+      - name: content-typo
         value: json
-        description: ""
-        disabled: true
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -36,9 +35,9 @@ collection:
   - url: http://localhost:8080/auth/login
     name: login
     meta:
-      id: req_b54e1368d0fa4a8ba8c4cb4fd9f81565
+      id: req_c592e92873734ca6b68d40c0e55f0372
       created: 1746723923204
-      modified: 1747426308352
+      modified: 1751745295135
       isPrivate: false
       description: ""
       sortKey: -1745817086292
@@ -47,18 +46,17 @@ collection:
       mimeType: application/json
       text: |-
         {"email":"teste@teste.com",
-        "password":"teste123"}
+        "password":"teste12345"}
     headers:
       - name: Content-Type
         value: application/json
       - name: User-Agent
         value: insomnia/11.1.0
-        id: pair_15eb60182c8b455d940eb2b5941b3b8c
-      - id: pair_ce76965dc13345e0aff2343eef4352ec
-        name: content-typo
+      - name: content-typo
         value: json
-        description: ""
-        disabled: true
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -70,7 +68,7 @@ collection:
   - url: http://localhost:8080/auth/register
     name: Register
     meta:
-      id: req_30f17fbdcb7844bf86be6ddd57eff82d
+      id: req_5574f82566ad464eb872e6c4f9b5cb50
       created: 1747337705056
       modified: 1747338115322
       isPrivate: false
@@ -92,12 +90,11 @@ collection:
         value: application/json
       - name: User-Agent
         value: insomnia/11.1.0
-        id: pair_15eb60182c8b455d940eb2b5941b3b8c
-      - id: pair_ce76965dc13345e0aff2343eef4352ec
-        name: content-typo
+      - name: content-typo
         value: json
-        description: ""
-        disabled: true
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -109,33 +106,28 @@ collection:
   - url: http://localhost:8080/user/me
     name: Me
     meta:
-      id: req_3febd21233f442d28d168efd14612d4d
+      id: req_d4b9f555899f44eeb1112c80ae128886
       created: 1747408103979
-      modified: 1748813655209
+      modified: 1751743158860
       isPrivate: false
       description: ""
       sortKey: -1747408103979
-    method: OPTIONS
+    method: GET
     headers:
       - name: User-Agent
         value: insomnia/11.1.0
-        id: pair_7c8b76d71f724a9ea32f394ff28ebcf2
-        disabled: true
-      - id: pair_eefa2fa8867c4677a08960794f545ffc
-        name: Access-Control-Allow-Origin
+      - name: Access-Control-Allow-Origin
         value: "*"
-        description: ""
-        disabled: true
-      - id: pair_f7059843e7314df8adc8627548a577c8
-        name: origin
+      - name: origin
         value: http://localhost:3000
-        description: ""
-        disabled: false
     authentication:
       type: bearer
-      token: "{% response 'body', 'req_b54e1368d0fa4a8ba8c4cb4fd9f81565',
-        'b64::JC5hY2Nlc3NUb2tlbg==::46b', 'never', 60 %}"
       disabled: false
+      token: "{% response 'body', 'req_c592e92873734ca6b68d40c0e55f0372',
+        'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -147,7 +139,7 @@ collection:
   - url: http://ec2-34-205-15-185.compute-1.amazonaws.com:8080/actuato
     name: Health Producao
     meta:
-      id: req_d8bb1c01907d41e28e001fefe7adeb37
+      id: req_c84df9c1f8ff4f1b904dfaf0904c4600
       created: 1748109464170
       modified: 1749250662630
       isPrivate: false
@@ -157,6 +149,9 @@ collection:
     headers:
       - name: User-Agent
         value: insomnia/11.1.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -168,7 +163,7 @@ collection:
   - url: http://localhost:8080/user/me
     name: Me CORS
     meta:
-      id: req_f205b07571ee4686b8dcfd350e2c92b9
+      id: req_6da2f48c5da844cf8954f7cb570c7e48
       created: 1748109525771
       modified: 1748110226654
       isPrivate: false
@@ -180,9 +175,12 @@ collection:
         value: insomnia/11.1.0
     authentication:
       type: bearer
+      disabled: false
       token: "{% response 'body', 'req_b54e1368d0fa4a8ba8c4cb4fd9f81565',
         'b64::JC5hY2Nlc3NUb2tlbg==::46b', 'never', 60 %}"
-      disabled: false
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -194,7 +192,7 @@ collection:
   - url: http://ec2-34-205-15-185.compute-1.amazonaws.com:8080/user/me
     name: Me Producao
     meta:
-      id: req_58a21b3311224c2194078c63a37fb317
+      id: req_575f8469958d4f00a05912ecf2bd04f8
       created: 1749250644929
       modified: 1749250669207
       isPrivate: false
@@ -204,6 +202,9 @@ collection:
     headers:
       - name: User-Agent
         value: insomnia/11.1.0
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -215,7 +216,7 @@ collection:
   - url: http://ec2-34-205-15-185.compute-1.amazonaws.com:8080/auth/login
     name: login producao
     meta:
-      id: req_4e04ca772f3444a0811518d07206b649
+      id: req_99ac41bd3f2c44afb4cc6e04007cd066
       created: 1749515053037
       modified: 1749515087959
       isPrivate: false
@@ -232,12 +233,11 @@ collection:
         value: application/json
       - name: User-Agent
         value: insomnia/11.1.0
-        id: pair_15eb60182c8b455d940eb2b5941b3b8c
-      - id: pair_ce76965dc13345e0aff2343eef4352ec
-        name: content-typo
+      - name: content-typo
         value: json
-        description: ""
-        disabled: true
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -249,7 +249,7 @@ collection:
   - url: http://ec2-34-205-15-185.compute-1.amazonaws.com:8080/auth/login
     name: login producao CORS
     meta:
-      id: req_b81ec3fd7b1a4c8382bfd88c0f76688d
+      id: req_c91fe094e7a64c63b3c3c48f2b7d9335
       created: 1749515370233
       modified: 1749515373230
       isPrivate: false
@@ -266,12 +266,11 @@ collection:
         value: application/json
       - name: User-Agent
         value: insomnia/11.1.0
-        id: pair_15eb60182c8b455d940eb2b5941b3b8c
-      - id: pair_ce76965dc13345e0aff2343eef4352ec
-        name: content-typo
+      - name: content-typo
         value: json
-        description: ""
-        disabled: true
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -283,7 +282,7 @@ collection:
   - url: http://localhost:8080/auth/reset-password
     name: reset senha local
     meta:
-      id: req_5a464f2aa37e4d6a92ee8d6e0ae60f49
+      id: req_8144fa12c583406cbbcaef9a6f802604
       created: 1750116883856
       modified: 1750123918224
       isPrivate: false
@@ -294,22 +293,117 @@ collection:
       mimeType: application/json
       text: ""
     parameters:
-      - id: pair_a9781ece6e494ef3a2e14a4ce8409901
-        name: email
+      - name: email
         value: irmaocaradepau@gmail.com
-        description: ""
         disabled: false
+        id: pair_a9781ece6e494ef3a2e14a4ce8409901
     headers:
       - name: Content-Type
         value: application/json
       - name: User-Agent
         value: insomnia/11.1.0
-        id: pair_15eb60182c8b455d940eb2b5941b3b8c
-      - id: pair_ce76965dc13345e0aff2343eef4352ec
-        name: content-typo
+      - name: content-typo
         value: json
-        description: ""
-        disabled: true
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: ""
+    name: My first request
+    meta:
+      id: req_12bce35879734b06985f35ea24a965ea
+      created: 1751742888958
+      modified: 1751742888958
+      isPrivate: false
+      description: ""
+      sortKey: -1751742888958
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/user/change-password
+    name: Trocar Senha
+    meta:
+      id: req_af06552280174e8a861588fd2e403b80
+      created: 1751745094309
+      modified: 1751745277608
+      isPrivate: false
+      description: ""
+      sortKey: -1747235762583.75
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"oldPassword": "teste123",
+        	"newPassword": "teste12345"
+        	
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+      - name: Access-Control-Allow-Origin
+        value: "*"
+      - name: origin
+        value: http://localhost:3000
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{% response 'body', 'req_c592e92873734ca6b68d40c0e55f0372',
+        'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/user/cancel-account
+    name: deletar conta
+    meta:
+      id: req_5e8a178d305d404789717bf647375dc3
+      created: 1751745351116
+      modified: 1751745417341
+      isPrivate: false
+      description: ""
+      sortKey: -1747321933281.375
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+      - name: Access-Control-Allow-Origin
+        value: "*"
+      - name: origin
+        value: http://localhost:3000
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{% response 'body', 'req_c592e92873734ca6b68d40c0e55f0372',
+        'b64::JC5kYXRhLmFjY2Vzc1Rva2Vu::46b', 'never', 60 %}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -321,26 +415,13 @@ collection:
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_103f9584fe3237075fe414625b58085fe8bec867
-    created: 1746718720860
-    modified: 1746917604389
-  cookies:
-    - key: JSESSIONID
-      value: 58A94F06689B1545E36800C21D44E79E
-      domain: localhost
-      path: /
-      httpOnly: true
-      hostOnly: true
-      creation: 2025-05-08T16:45:37.727Z
-      lastAccessed: 2025-05-10T22:53:24.388Z
-      id: 13ac58a1-5056-42cf-b94d-56d90afbac9e
+    id: jar_8bb1f65f8a131c7d804bed49672aee5aa6bef218
+    created: 1751742888665
+    modified: 1751742888665
 environments:
   name: Base Environment
   meta:
-    id: env_103f9584fe3237075fe414625b58085fe8bec867
-    created: 1746718720853
-    modified: 1747408296393
+    id: env_8bb1f65f8a131c7d804bed49672aee5aa6bef218
+    created: 1751742888664
+    modified: 1751742888664
     isPrivate: false
-  data:
-    access_token: ""
-    "": ""

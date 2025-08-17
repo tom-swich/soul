@@ -3,14 +3,16 @@ package com.solvtrends.monolito.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String email;
     private String password;
     private String nome;
@@ -19,67 +21,25 @@ public class Usuario {
     private String paisTelefone;
     private long telefone;
 
-    public String getId() {
-        return id;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime dataCriacao;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime dataAtualizacao;
 
-    public String getEmail() {
-        return email;
-    }
+    private Boolean contaAtiva = true;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime dataCancelamento;
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime dataExpiracao;
 
-    public String getSobrenome() {
-        return sobrenome;
-    }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
 
-    public String getCpf() {
-        return cpf;
-    }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
-    public long getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(long telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getPaisTelefone() {
-        return paisTelefone;
-    }
-
-    public void setPaisTelefone(String paisTelefone) {
-        this.paisTelefone = paisTelefone;
-    }
 }

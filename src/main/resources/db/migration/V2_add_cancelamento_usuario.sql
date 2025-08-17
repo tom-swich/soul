@@ -1,0 +1,2 @@
+ALTER TABLE usuario ADD COLUMN conta_ativa BOOLEAN DEFAULT TRUE;
+ALTER TABLE usuario ADD COLUMN data_cancelamento TIMESTAMP NULL;

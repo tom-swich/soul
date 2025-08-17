@@ -1,7 +1,6 @@
 package com.solvtrends.monolito.security;
 
-
-import com.solvtrends.monolito.service.UserDetailsService;
+import com.solvtrends.monolito.service.UserDetailsSecurityService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,8 +22,7 @@ public class JWTFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private UserDetailsService userDetailsService;
-
+    private UserDetailsSecurityService userDetailsSecurityService;
 
 
     @Override
@@ -51,7 +49,7 @@ public class JWTFilter extends OncePerRequestFilter {
 
 
             if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails userDetails = userDetailsService.loadUserByEmail(email);
+                UserDetails userDetails = userDetailsSecurityService.loadUserByUsername(email);
 
                 if (jwtUtil.validateToken(token)) {
                     UsernamePasswordAuthenticationToken authToken =
